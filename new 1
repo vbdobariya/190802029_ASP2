@@ -1,0 +1,17 @@
+ public void NotifyMe(View view)
+    {
+        NotificationCompat.Builder nBuilder = new NotificationCompat.Builder(this)
+                .setSmallIcon(R.drawable.ic_launcher_background)
+                .setContentTitle("Exam Notification")
+                .setContentText("BSC.IT");
+        Intent i = new Intent(LogoutActivity.this,LogoutActivity.class);
+        NotificationManager nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
+        {
+            NotificationChannel nc = new NotificationChannel("ch1","APPNAME",NotificationManager.IMPORTANCE_DEFAULT);
+            nm.createNotificationChannel(nc);
+            nBuilder.setChannelId("ch1");
+        }
+        nm.notify(0,nBuilder.build());
+
+    }
